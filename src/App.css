@@ -3,6 +3,10 @@
   font-size: calc(6px + 1vmin);
 }
 
+* {
+  transition: all .05s;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -40,11 +44,27 @@
   width: 100%;
   padding: 0 1vw;
   font-size: calc(8px + 1vmin);
+  display: inline-block;
 }
 
 .App-search label {
   font-size: calc(4px + 1vmin);
-  color: #999;
+  color: #ea2900;
+  display: block;
+}
+
+.App-search button {
+  background-color: #00A36C;
+  color: #fff;
+  padding: 0.5vw 1.5vw;
+  border: 1px solid #00A36C;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.App-search button:hover {
+  background-color: #2AAA8A;
+  border: 1px solid #2AAA8A;
 }
 
 ul {
