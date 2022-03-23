@@ -1,6 +1,9 @@
 # iTunes Search App
 Created for demo purposes.
 
+# Azure hosted application
+[Azure Web App](https://itunes-search-demo.azurewebsites.net/)
+
 # How to start the application
 1. Checkout the repository
 2. Open in Visual Studio Code
