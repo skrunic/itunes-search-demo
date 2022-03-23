@@ -1,6 +1,12 @@
+import { useState } from "react";
+import uuid from "react-uuid";
 import './App.css';
 
 const App = () => {
+  const initialList = ["A", "B", "C", "D", "E"];
+
+  const [itemsList, setItemsList] = useState(initialList); 
+
   return (
     <div className="App">
       <header className="App-header">
@@ -11,12 +17,14 @@ const App = () => {
         <div className="App-search">
           <input type="text" placeholder="Search Band"></input>
           <ul>
-            <li className="result">A</li>
-            <li className="result">B</li>
-            <li className="result">C</li>
-            <li className="result">D</li>
-            <li className="result">E</li>
-          </ul>
+            {
+                itemsList.length > 0 ?
+                    itemsList.map(i => {
+                        return (<li key={uuid()} className="result">{i}</li>)
+                    })
+                    : <li className="result">No result</li>
+            }
+        </ul>
         </div>
       </div>
     </div>
