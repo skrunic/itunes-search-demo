@@ -9,13 +9,13 @@ const App = () => {
 
       <div className="App-container">
         <div className="App-search">
-          <input type="text" className="app-search" placeholder="Search Band"></input>
+          <input type="text" placeholder="Search Band"></input>
           <ul>
-            <li>A</li>
-            <li>B</li>
-            <li>C</li>
-            <li>D</li>
-            <li>E</li>
+            <li className="result">A</li>
+            <li className="result">B</li>
+            <li className="result">C</li>
+            <li className="result">D</li>
+            <li className="result">E</li>
           </ul>
         </div>
       </div>

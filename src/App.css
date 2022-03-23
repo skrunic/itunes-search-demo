@@ -20,3 +20,36 @@
   flex-direction: column;
   align-items: center;
 }
+
+.App-container * {
+  box-sizing: border-box;
+}
+
+.App-search {
+  width: 25vw;
+  margin-top: 5vh;
+}
+
+.App-search input {
+  min-height: 5vh;
+  width: 100%;
+  margin-bottom: 2vh;
+  padding: 0 1vw;
+  font-size: calc(8px + 1vmin);
+}
+
+ul {
+  background-color: #282c34;
+  list-style-type: none;
+  width: 100%;
+  padding: 1vh;
+  margin: 0;
+}
+
+li {
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #fafafa;
+  margin-bottom: 1vh;
+  padding: 1vh;
+}
