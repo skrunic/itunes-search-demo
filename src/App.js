@@ -1,11 +1,12 @@
 import { useRef, useState, useEffect } from "react";
-import uuid from "react-uuid";
+
+import RotatingList from "./components/rotatingList";
+
 import './App.css';
 
 const App = () => {
   const initialList = ["A", "B", "C", "D", "E"];
   const delay = useRef(null);
-  const [timer, setTimer] = useState(0);
 
   const [itemsList, setItemsList] = useState(initialList);
   const [searchValue, setSearchValue] = useState("");
@@ -94,26 +95,6 @@ const App = () => {
     }
   }, [albums])
 
-  // Rotate array members
-  const rotateArray = (array, from, to) => {
-    let elem = array.splice(from, 1)[0];
-    array.splice(to, 0, elem);
-    return array;
-  }
-
-  // Refresh interval to rotate list items
-  useEffect(() => {
-    const interval = setInterval(() => {
-      //let albumList = [...itemsList, ...albums];
-      let newArr = rotateArray(itemsList, 0, itemsList.length - 1);
-      console.log("Album list: ", itemsList);
-      setItemsList(newArr);
-      setTimer(timer => timer + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [timer, itemsList]);
-
   // App render
   return (
     <div className="App">
@@ -124,15 +105,10 @@ const App = () => {
       <div className="App-container">
         <div className="App-search">
           <input type="text" placeholder="Search Band" onChange={onChange} value={searchValue}></input>
-          <ul>
-            {
-              itemsList.length > 0 ?
-                itemsList.map(i => {
-                  return (<li key={uuid()} className="result">{i}</li>)
-                })
-                : <li className="result">No result</li>
-            }
-          </ul>
+          <RotatingList 
+            itemsList={itemsList}
+            setItemsList={setItemsList}
+          />
         </div>
       </div>
     </div>
