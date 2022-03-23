@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import uuid from "react-uuid";
 import './App.css';
 
@@ -10,6 +10,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const [data, setData] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   // Update value on change
   const onChange = (e) => {
@@ -40,6 +41,35 @@ const App = () => {
       })
   }
 
+  // Parse data 
+  const parseAlbums = (data) => {
+    const results = data.results;
+    let albums = [];
+
+    if(results && results.length > 0){
+      results.map( a => {
+        if( a.collectionName 
+            && albums.indexOf(a.collectionName) < 0
+          ){
+          albums.push(a.collectionName);
+        } else {
+          console.log("Repeated result or collectionName is not set!");
+        }
+      })
+    }
+    albums.sort();
+    return albums.slice(0, 5);
+  }
+
+  // Parse albums when data fetched
+  useEffect(() => {
+    const albums = parseAlbums(data);
+    setAlbums(albums);
+    //console.log("Parsed albums: ", albums);
+  }, [data])
+
+
+  // App render
   return (
     <div className="App">
       <header className="App-header">
