@@ -72,6 +72,27 @@ const App = () => {
   }, [data])
 
 
+  // Replace albums when new data is fetched
+  useEffect(() => {
+    if (albums.length > 0) {
+      let counter = 0;
+      let newItemList = itemsList.map(e => {
+        if (initialList.indexOf(e) > -1) {
+          return e;
+        } else {
+          const repl = albums[counter];
+          counter++;
+          return repl;
+        }
+      })
+
+      if (newItemList.length !== 5) {
+        setItemsList([...newItemList]);
+      } else {
+        setItemsList([...itemsList, ...albums]);
+      }
+    }
+  }, [albums])
 
   // Rotate array members
   const rotateArray = (array, from, to) => {
