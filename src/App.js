@@ -1,32 +1,18 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import RotatingList from "./components/rotatingList";
+import SearchField from "./components/SearchField";
 
 import './App.css';
 
 const App = () => {
   const initialList = ["A", "B", "C", "D", "E"];
-  const delay = useRef(null);
 
   const [itemsList, setItemsList] = useState(initialList);
-  const [searchValue, setSearchValue] = useState("");
 
   const [data, setData] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [previousRes, setPreviousRes] = useState([]);
-
-  // Update value on change
-  const onChange = (e) => {
-    clearTimeout(delay.current);
-
-    let value = e.currentTarget.value;
-    setSearchValue(value);
-
-    delay.current = setTimeout(() => {
-      console.log(`API search for: ${value}`);
-      if (value.length >= 3) fetchData(value);
-    }, 1000);
-  }
 
   // Fetching data
   const fetchData = (value) => {
@@ -104,7 +90,9 @@ const App = () => {
 
       <div className="App-container">
         <div className="App-search">
-          <input type="text" placeholder="Search Band" onChange={onChange} value={searchValue}></input>
+          <SearchField 
+            fetchData={fetchData}
+          />
           <RotatingList 
             itemsList={itemsList}
             setItemsList={setItemsList}

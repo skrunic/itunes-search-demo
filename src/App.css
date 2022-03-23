@@ -26,16 +26,25 @@
 }
 
 .App-search {
-  width: 25vw;
+  width: 30vw;
   margin-top: 5vh;
+}
+
+.App-search .search-element {
+  text-align: right;
+  margin-bottom: 2vh;
 }
 
 .App-search input {
   min-height: 5vh;
   width: 100%;
-  margin-bottom: 2vh;
   padding: 0 1vw;
   font-size: calc(8px + 1vmin);
+}
+
+.App-search label {
+  font-size: calc(4px + 1vmin);
+  color: #999;
 }
 
 ul {
