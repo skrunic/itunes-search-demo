@@ -14,9 +14,8 @@ const RotatingList = ({ itemsList, setItemsList }) => {
     // Refresh interval
     useEffect(() => {
         const interval = setInterval(() => {
-            //let albumList = [...itemsList, ...albums];
             let newArr = rotateArray(itemsList, 0, itemsList.length - 1);
-            console.log("Album list: ", itemsList);
+            //console.log("Album list: ", itemsList);
             setItemsList(newArr);
             setTimer(timer => timer + 1);
         }, 1000);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import RotatingList from "./components/rotatingList";
+import RotatingList from "./components/RotatingList";
 import SearchField from "./components/SearchField";
 
 import './App.css';
@@ -55,7 +55,6 @@ const App = () => {
     const albums = parseAlbums(data);
     setAlbums(albums);
     setPreviousRes([...previousRes, ...albums]);
-    //console.log("Parsed albums: ", albums);
   }, [data])
 
 
