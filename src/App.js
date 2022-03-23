@@ -17,7 +17,13 @@ const App = () => {
   // Fetching data
   const fetchData = (value) => {
     setData([]);
-    fetch(`https://itunes.apple.com/search?term=${value}`)
+    fetch(`https://itunes.apple.com/search?term=${value}`,
+    {
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }
+    })
       .then(response => {
         return response.json();
       })
