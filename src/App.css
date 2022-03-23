@@ -51,6 +51,7 @@
   font-size: calc(4px + 1vmin);
   color: #ea2900;
   display: block;
+  position: absolute;
 }
 
 .App-search button {
