@@ -18,6 +18,20 @@
   color: white;
 }
 
+.App-message {
+  width: 100%;
+  color: #fff;
+  padding: 1vh 0;
+  position: absolute;
+}
+
+.App-message.message-error {
+  background-color: #EE4B2B;
+}
+.App-message.message-success {
+  background-color: #00A36C;
+}
+
 .App-container {
   min-height: 90vh;
   display: flex;
@@ -31,7 +45,7 @@
 
 .App-search {
   width: 30vw;
-  margin-top: 5vh;
+  margin-top: 10vh;
 }
 
 .App-search .search-element {
@@ -49,7 +63,7 @@
 
 .App-search label {
   font-size: calc(4px + 1vmin);
-  color: #ea2900;
+  color: #EE4B2B;
   display: block;
   position: absolute;
 }

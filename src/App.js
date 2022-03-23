@@ -14,25 +14,32 @@ const App = () => {
   const [albums, setAlbums] = useState([]);
   const [previousRes, setPreviousRes] = useState([]);
 
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+
   // Fetching data
   const fetchData = (value) => {
     setData([]);
+    setSuccessMsg("");
+    setErrorMsg("");
     fetch(`https://itunes.apple.com/search?term=${value}`,
-    {
-      mode: 'cors',
-      headers: {
-        'Access-Control-Allow-Origin':'*'
-      }
-    })
+      {
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
       .then(response => {
         return response.json();
       })
       .then(data => {
         setData(data.results);
         console.log("Data fetched: ", data);
+        setSuccessMsg("Data fetched!");
       })
       .catch(error => {
         console.error("Error fetching data: ", error.message);
+        setErrorMsg(error.message);
       })
   }
 
@@ -93,12 +100,24 @@ const App = () => {
         iTunes Search App
       </header>
 
+      {
+        errorMsg ?
+          <div className={`App-message message-error`}>
+            {errorMsg}
+          </div>
+          : successMsg ?
+            <div className={`App-message message-success` }>
+              {successMsg}
+            </div>
+          : null
+      }
+
       <div className="App-container">
         <div className="App-search">
-          <SearchField 
+          <SearchField
             fetchData={fetchData}
           />
-          <RotatingList 
+          <RotatingList
             itemsList={itemsList}
             setItemsList={setItemsList}
           />
