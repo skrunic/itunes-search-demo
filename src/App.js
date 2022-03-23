@@ -43,16 +43,15 @@ const App = () => {
   }
 
   // Parse data 
-  const parseAlbums = (data) => {
-    const results = data.results;
+  const parseAlbums = (results) => {
     let albums = [];
 
-    if(results && results.length > 0){
-      results.map( a => {
-        if( a.collectionName 
-            && albums.indexOf(a.collectionName) < 0
-            && previousRes.indexOf(a.collectionName) < 0
-          ){
+    if (results && results.length > 0) {
+      results.map(a => {
+        if (a.collectionName
+          && albums.indexOf(a.collectionName) < 0
+          && previousRes.indexOf(a.collectionName) < 0
+        ) {
           albums.push(a.collectionName);
         } else {
           console.log("Repeated result or collectionName is not set!");
