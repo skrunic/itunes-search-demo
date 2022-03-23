@@ -11,6 +11,7 @@ const App = () => {
 
   const [data, setData] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [previousRes, setPreviousRes] = useState([]);
 
   // Update value on change
   const onChange = (e) => {
@@ -50,6 +51,7 @@ const App = () => {
       results.map( a => {
         if( a.collectionName 
             && albums.indexOf(a.collectionName) < 0
+            && previousRes.indexOf(a.collectionName) < 0
           ){
           albums.push(a.collectionName);
         } else {
@@ -65,6 +67,7 @@ const App = () => {
   useEffect(() => {
     const albums = parseAlbums(data);
     setAlbums(albums);
+    setPreviousRes([...previousRes, ...albums]);
     //console.log("Parsed albums: ", albums);
   }, [data])
 
