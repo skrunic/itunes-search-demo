@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-size: calc(8px + 1vmin);
+  font-size: calc(6px + 1vmin);
 }
 
 .App-header {
@@ -60,5 +60,5 @@ li {
   border-radius: 10px;
   background-color: #fafafa;
   margin-bottom: 1vh;
-  padding: 1vh;
+  padding: 1.5vh 0;
 }
