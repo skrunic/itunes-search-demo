@@ -26,7 +26,8 @@ const App = () => {
       {
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
         }
       })
       .then(response => {
